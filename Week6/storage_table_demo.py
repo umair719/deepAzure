@@ -177,13 +177,13 @@ input('Press Enter to continue...')
 items = table_service.query_entities('itemstable', filter="PartitionKey eq 'cardealership'", select='model,year,price')
 for item in items:
     print('Model: ' + item.model)
-    print('Year: ' + item.year)
+    print('Year: ' + str(item.year))
     print('Price: $' + str(item.cost) + '\n')
 
 items = table_service.query_entities('itemstable', filter="PartitionKey eq 'coffeeshop'", select='flavor,size,price')
 for item in items:
     print('Flavor: ' + item.flavor)
-    print('Drink Size: ' + item.size)
+    print('Drink Size: ' + str(item.size) + 'oz')
     print('Price: ' + str(item.price) + '\n')
 
 time.sleep(1)
