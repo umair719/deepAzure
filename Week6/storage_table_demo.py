@@ -1,7 +1,7 @@
 ## Added comments to prove that blob can be modified.
 ## This will be re-upload to azure.
 
-import string,random,time,azurerm,json
+import string, random, time, azurerm, json
 from azure.storage.table import TableService, Entity
 
 # Define variables to handle Azure authentication
@@ -9,8 +9,8 @@ auth_token = azurerm.get_access_token_from_cli()
 subscription_id = azurerm.get_subscription_from_cli()
 
 # Define variables with random resource group and storage account names
-resourcegroup_name = 'uk'+''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(6))
-storageaccount_name = 'uk'+''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(6))
+resourcegroup_name = 'uk' + ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(6))
+storageaccount_name = 'uk' + ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(6))
 location = 'southcentralus'
 
 ###
@@ -24,13 +24,13 @@ else:
     print('Error creating resource group')
 
 # Create a storage account for our demo
-response = azurerm.create_storage_account(auth_token, subscription_id, resourcegroup_name, storageaccount_name,  location, storage_type='Standard_LRS')
+response = azurerm.create_storage_account(auth_token, subscription_id, resourcegroup_name, storageaccount_name,
+                                          location, storage_type='Standard_LRS')
 if response.status_code == 202:
     print('Storage account: ' + storageaccount_name + ' created successfully.')
     time.sleep(2)
 else:
     print('Error creating storage account')
-
 
 ###
 # Use the Azure Storage Storage SDK for Python to create a Table
@@ -56,11 +56,11 @@ else:
 
 time.sleep(1)
 
-
 ###
 # Use the Azure Storage Storage SDK for Python to create some entries in the Table
 ###
-print('Now let\'s add some entries to our Table.\nRemember, Azure Storage Tables is a NoSQL datastore, so this is similar to adding records to a database.')
+print(
+    'Now let\'s add some entries to our Table.\nRemember, Azure Storage Tables is a NoSQL datastore, so this is similar to adding records to a database.')
 input('Press Enter to continue...')
 
 # Each entry in a Table is called an 'Entity'.
@@ -127,9 +127,9 @@ car.model = '328i'
 car.year = 2016
 car.color = 'Silver'
 car.price = 35000
-print('Created entry for a Car: ' + car.make  + '...\n')
+table_service.insert_entity('itemstable', car)
+print('Created entry for a Car: ' + car.make + '...\n')
 time.sleep(1)
-
 
 car = Entity()
 car.PartitionKey = 'cardealership'
@@ -139,9 +139,9 @@ car.model = 'X5'
 car.year = 2017
 car.color = 'Red'
 car.price = 65000
-print('Created entry for a Car: ' + car.make  + '...\n')
+table_service.insert_entity('itemstable', car)
+print('Created entry for a Car: ' + car.make + '...\n')
 time.sleep(1)
-
 
 coffee = Entity()
 coffee.PartitionKey = 'coffeeshop'
@@ -150,9 +150,9 @@ coffee.brand = 'Starbucks'
 coffee.flavor = 'Pike Place'
 coffee.size = 20
 coffee.price = 2.35
-print('Created entry for a Coffee: ' + coffee.brand  + '...\n')
+table_service.insert_entity('itemstable', coffee)
+print('Created entry for a Coffee: ' + coffee.brand + '...\n')
 time.sleep(1)
-
 
 coffee = Entity()
 coffee.PartitionKey = 'coffeeshop'
@@ -161,13 +161,15 @@ coffee.brand = 'Starbucks'
 coffee.flavor = 'Blonde'
 coffee.size = 16
 coffee.price = 1.95
-print('Created entry for a Coffee: ' + coffee.brand  + '...\n')
+table_service.insert_entity('itemstable', coffee)
+print('Created entry for a Coffee: ' + coffee.brand + '...\n')
 time.sleep(1)
 
 ###
 # Use the Azure Storage Storage SDK for Python to query for entities in our Table
 ###
-print('With some data in our Azure Storage Table, we can query the data.\nLet\'s see what the Car Dealership menu looks like.')
+print(
+    'With some data in our Azure Storage Table, we can query the data.\nLet\'s see what the Car Dealership menu looks like.')
 input('Press Enter to continue...')
 
 # In this query, you define the partition key to search within, and then which properties to retrieve
@@ -186,12 +188,12 @@ for item in items:
 
 time.sleep(1)
 
-
 ###
 # This was a quick demo to see Tables in action.
 # Although the actual cost is minimal (fractions of a cent per month) for the three entities we created, it's good to clean up resources when you're done
 ###
-print('\nThis is a basic example of how Azure Storage Tables behave like a database.\nTo keep things tidy, let\'s clean up the Azure Storage resources we created.')
+print(
+    '\nThis is a basic example of how Azure Storage Tables behave like a database.\nTo keep things tidy, let\'s clean up the Azure Storage resources we created.')
 input('Press Enter to continue...')
 
 response = table_service.delete_table('itemstable')
