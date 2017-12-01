@@ -144,7 +144,7 @@ time.sleep(1)
 
 
 coffee = Entity()
-coffee.Partitionkey = 'coffeeshop'
+coffee.PartitionKey = 'coffeeshop'
 coffee.RowKey = '003'
 coffee.brand = 'Starbucks'
 coffee.flavor = 'Pike Place'
@@ -155,7 +155,7 @@ time.sleep(1)
 
 
 coffee = Entity()
-coffee.Partitionkey = 'coffeeshop'
+coffee.PartitionKey = 'coffeeshop'
 coffee.RowKey = '004'
 coffee.brand = 'Starbucks'
 coffee.flavor = 'Blonde'
@@ -167,7 +167,7 @@ time.sleep(1)
 ###
 # Use the Azure Storage Storage SDK for Python to query for entities in our Table
 ###
-print('With some data in our Azure Storage Table, we can query the data.\nLet\'s see what the pizza menu looks like.')
+print('With some data in our Azure Storage Table, we can query the data.\nLet\'s see what the Car Dealership menu looks like.')
 input('Press Enter to continue...')
 
 # In this query, you define the partition key to search within, and then which properties to retrieve
