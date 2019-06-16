@@ -1,0 +1,7 @@
+
+
+
+To run bash scripts, if you are following my setup as described in Lab7, slide 9,
+do:
+	source activate env34
+before running them since my "az" functionality is only installed in this enviroment. 

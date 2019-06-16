@@ -1,0 +1,8 @@
+AZ Subscription ID:		
+Storage Name: 
+Storage Key: 
+Container & folder: 
+Data File Name:
+Application ID/client ID: 
+Client Secret Key/Tenant Key (name of key here): 		
+Directory ID/Tenant ID: 
