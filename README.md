@@ -1,4 +1,4 @@
-# Microsoft Azure Cloud
+# Cloud Computing using Microsoft Azure
 Set of homework assignements for an in-depth Microsoft Azure course
 
 |       |          |                                                                                                                                                                                                                                                                                                                                                               |  | 
